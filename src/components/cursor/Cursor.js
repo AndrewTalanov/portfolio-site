@@ -4,11 +4,15 @@ import { useRef, useState } from "react";
 import styles from "./Cursor.module.scss";
 
 import imgLink from "../../img/3.svg";
+import imgArrowDown from "../../img/arrow-black.svg";
+import imgArrowTop from "../../img/arrow-top.svg";
 
 const Cursor = () => {
 
     const ref = useRef();
     const refImg = useRef();
+    const refArrowDown = useRef();
+    const refArrowTop = useRef();
 
     const [ roundPos, setRoundPos ] = useState({ x: 0, y: 0 });
 
@@ -26,15 +30,27 @@ const Cursor = () => {
             duration: 500,
             fill: "forwards"
         });
-        
-        refImg.current.style.opacity = interacting ? 1 : 0;
+
+        refImg.current.style.opacity = interacting === 1 ? 1 : 0;
+        refArrowTop.current.style.opacity = interacting === 2 ? 1 : 0;
+        refArrowDown.current.style.opacity = interacting === 3 ? 1 : 0;
+
     }
 
     useEffect(() => {
         window.onmousemove = e => {
 
-            const interactable = e.target.closest(".item");
-            const interacting = interactable !== null;
+            let interactable = null;
+
+            if (e.target.closest(".item")) {
+                interactable = 1;
+            } else if (e.target.closest(".arrow-top")) {
+                interactable = 2;
+            } else if (e.target.closest(".arrow-down")) {
+                interactable = 3
+            }
+
+            const interacting = interactable;
 
             animateRound(e, interacting);
             
@@ -42,8 +58,10 @@ const Cursor = () => {
     });
 
     return (
-        <div className={styles.cursor} ref={ref} style={{ transform: `translate(${roundPos.x}px, ${roundPos.y}px)` }}>
+        <div className={styles.cursor} ref={ref} >
             <img ref={refImg} src={imgLink} style={{ opacity: 0 }} alt="icon" />
+            <img ref={refArrowDown} src={imgArrowDown} style={{ opacity: 0 }} alt="icon" />
+            <img ref={refArrowTop} src={imgArrowTop} style={{ opacity: 0 }} alt="icon" />
         </div>
     );
 }

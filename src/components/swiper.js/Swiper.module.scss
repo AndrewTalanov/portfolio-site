@@ -1,0 +1,38 @@
+.swiper {
+    position: fixed;
+    top: 25%;
+    right: 4vw;
+    width: 30px;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .arrow {
+        width: 100%;
+        cursor: pointer;
+    }
+    .arrow-top {
+        transform: rotate(180deg);
+    }
+    // .arrow-down {
+
+    // }
+    .dots {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        .dot {
+            box-sizing: border-box;
+            width: 20px;
+            height: 20px;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+    }
+
+    .active {
+        background-color: white;
+    }
+}

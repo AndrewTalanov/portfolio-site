@@ -4,3 +4,12 @@
 html {
   background-color: rgb(22, 19, 19);
 }
+::-webkit-scrollbar {
+  width: 12px; 
+  background-color: rgb(22, 19, 19);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(77, 67, 67);
+  border-radius: 9em;
+}
