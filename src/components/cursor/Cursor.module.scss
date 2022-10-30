@@ -13,6 +13,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 1000px) {
+        display: none;
+    }
     img {
         position: absolute;
         transition: .5s;

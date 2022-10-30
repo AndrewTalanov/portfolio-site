@@ -1,3 +1,6 @@
 .app {
     overflow: hidden;
+    @media (max-width: 611px) {
+        overflow-y: scroll;
+    }
 }

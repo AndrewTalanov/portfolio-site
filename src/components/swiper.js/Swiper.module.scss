@@ -7,6 +7,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media (max-width: 1024px) {
+        right: 3.2vw;
+    }
+    @media (max-width: 611px) {
+        display: none;
+    }
     .arrow {
         width: 100%;
         cursor: pointer;
@@ -14,9 +20,6 @@
     .arrow-top {
         transform: rotate(180deg);
     }
-    // .arrow-down {
-
-    // }
     .dots {
         width: 100%;
         display: flex;

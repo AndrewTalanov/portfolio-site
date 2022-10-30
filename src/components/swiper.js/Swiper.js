@@ -10,15 +10,49 @@ const Swiper = () => {
 
     const [dots, setDots] = useState();
     const [sites, setSites] = useState();
-    const heightVieport = document.documentElement.clientHeight;
-    let heightTranslate = 0;
+    const [heightVieport, setHeightVieport] = useState(document.documentElement.clientHeight);
+    const [widthVieport, setWidthVieport] = useState(document.documentElement.clientWidth);
 
     const refDot = useRef();
+    let heightTranslate = 0;
+
+    useEffect( () => {
+
+        const resizeHeightVieport = () => {
+            setHeightVieport(document.documentElement.clientHeight)
+        } 
+
+        window.addEventListener('resize', resizeHeightVieport);
+
+        return () => {
+            window.removeEventListener('resize', resizeHeightVieport);
+        }
+        
+    }, []);
+
+    useEffect( () => {
+
+        const resizeWidthViewport = () => {
+            setWidthVieport(document.documentElement.clientWidth)
+        } 
+
+        window.addEventListener('resize', resizeWidthViewport);
+
+        return () => {
+            window.removeEventListener('resize', resizeWidthViewport);
+        }
+
+    }, []);
 
     useEffect(() => {
+
         setDots(document.querySelectorAll('div[data-index]'));
+        
         setSites(document.querySelectorAll('div[data-site]'));
+
     }, [setDots, setSites]);
+
+    // анимация смены слайда
 
     const translateSites = (heightTranslate) => {
         sites.forEach(el => {
@@ -38,6 +72,8 @@ const Swiper = () => {
             fill: "forwards"
         });
     }
+    
+    // функционал точек
 
     const toggleDots = (heightTranslate) => {
         
@@ -49,6 +85,8 @@ const Swiper = () => {
         dots[id].classList.add(styles.active);
 
     }
+
+    // перемещение по кнопкам
 
     const clickTop = () => {
 
@@ -76,6 +114,8 @@ const Swiper = () => {
 
     }
 
+    // скролл
+
     function once(fn, context) { 
         let result;
     
@@ -87,7 +127,7 @@ const Swiper = () => {
                 fn = null;
                 setTimeout( () => {
                     fn = save;
-                }, 1500);
+                }, 1200);
             }
     
             return result;
@@ -103,6 +143,27 @@ const Swiper = () => {
     });
 
     onwheel = e => { launchOnce(e) }
+
+
+    // свайп 
+    let touchstartY = 0
+    let touchendY = 0
+        
+    function checkDirection() {
+      if (touchendY < touchstartY) clickDown();
+      if (touchendY > touchstartY) clickTop();
+    }
+    
+    document.addEventListener('touchstart', e => {
+      touchstartY = e.changedTouches[0].screenY
+    });
+    
+    document.addEventListener('touchend', e => {
+      touchendY = e.changedTouches[0].screenY
+      if (widthVieport > 611) {
+        checkDirection();
+      } 
+    });
 
     return (
         <div className={styles.swiper}>
