@@ -20,6 +20,36 @@ const Swiper = () => {
         setSites(document.querySelectorAll('div[data-site]'));
     }, [setDots, setSites]);
 
+    const translateSites = (heightTranslate) => {
+        sites.forEach(el => {
+
+            const keyframes = {
+                transform: `translateY(${heightTranslate}px)`
+            }
+            animateTranslateSites(el, keyframes);
+
+        });
+    }
+
+    const animateTranslateSites = (el, keyframes) => {
+
+        el.animate(keyframes, {
+            duration: 400,
+            fill: "forwards"
+        });
+    }
+
+    const toggleDots = (heightTranslate) => {
+        
+        const id = Math.abs(heightTranslate / heightVieport);
+
+        dots.forEach(el => {
+            el.classList.remove(styles.active);
+        });
+        dots[id].classList.add(styles.active);
+
+    }
+
     const clickTop = () => {
 
         heightTranslate += heightVieport;
@@ -46,38 +76,33 @@ const Swiper = () => {
 
     }
 
-    const toggleDots = (heightTranslate) => {
-        
-        const id = Math.abs(heightTranslate / heightVieport);
-
-        dots.forEach(el => {
-            el.classList.remove(styles.active);
-        });
-        dots[id].classList.add(styles.active);
-
-        // console.log(test);
-        // console.log(heightVieport);
-
-    }
-
-    const translateSites = (heightTranslate) => {
-        sites.forEach(el => {
-
-            const keyframes = {
-                transform: `translateY(${heightTranslate}px)`
+    function once(fn, context) { 
+        let result;
+    
+        return function() {
+            let save = fn; 
+            
+            if(fn) {
+                result = fn.apply(context || this, arguments);
+                fn = null;
+                setTimeout( () => {
+                    fn = save;
+                }, 1500);
             }
-            animateTranslateSites(el, keyframes);
-
-        });
+    
+            return result;
+        };
     }
 
-    const animateTranslateSites = (el, keyframes) => {
+    const launchOnce = once(function(e) {
+        if (e.deltaY > 0 ) {
+            clickDown();
+        } else if (e.deltaY < 0 ) {
+            clickTop();
+        }  
+    });
 
-        el.animate(keyframes, {
-            duration: 400,
-            fill: "forwards"
-        });
-    }
+    onwheel = e => { launchOnce(e) }
 
     return (
         <div className={styles.swiper}>
