@@ -6,7 +6,6 @@
     align-items: center;
 }
 .item-container {
-    // width: 33.33%;
     width: 80%;
     height: 80vh;
     height: calc(var(--vh, 1vh) * 80);
@@ -22,7 +21,7 @@
         height: 100%;
         box-sizing: border-box; 
         background-size: cover;
-        background-position: 0 0;
+        background-position: center;
         background-repeat: no-repeat;
         transition: .4s;
         position: relative;
