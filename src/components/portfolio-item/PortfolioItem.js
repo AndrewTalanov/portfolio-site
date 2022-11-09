@@ -1,7 +1,7 @@
 import { setStyles } from "../../GlobalFunctions";
 import styles from "./PortfolioItem.module.scss";
 
-const PortfolioItem = ({img, flag, title, id}) => {
+const PortfolioItem = ({img, flag, title, id, url}) => {
 
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -19,7 +19,7 @@ const PortfolioItem = ({img, flag, title, id}) => {
         <div className={styles['item-wrapper']} data-site={id}>
             <div className={setStyles(styles['item-container'])}>
                 <div style={{backgroundImage: `url(${img})`}} className={styles['item-content']}></div>
-                <p className={flag}>{title}</p>
+                <a className={flag} href={url} target="_blank" rel="noopener noreferrer"> {title}</a>
             </div>
         </div>
     );

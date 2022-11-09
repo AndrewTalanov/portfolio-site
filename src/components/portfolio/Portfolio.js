@@ -7,7 +7,7 @@ const Portfolio = () => {
     return (
         <div className={styles.portfolio}>
             {data.map(item => {
-                return <PortfolioItem key={item.id} img={item.img} flag={item.flag} title={item.title} id={item.id}/>
+                return <PortfolioItem key={item.id} img={item.img} flag={item.flag} title={item.title} id={item.id} url={item.url}/>
             })}
         </div>
     );

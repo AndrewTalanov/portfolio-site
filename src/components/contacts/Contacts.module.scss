@@ -1,0 +1,38 @@
+.btn-contacts {
+    cursor: pointer;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    // border: 1px solid white;
+    left: 4vw;
+    bottom: 5vh;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: .4s;
+    z-index: 0;
+    animation: 3s ease-in infinite blinkShadow;
+    &::before {
+        content: "";
+        // width: 40px;
+        // height: 40px;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+}
+
+@keyframes blinkShadow {
+    0% {
+        box-shadow: none;
+    }    
+    70% {
+        box-shadow: 0 0 30px white;
+    }
+    100% {
+        box-shadow: none;
+    }
+}

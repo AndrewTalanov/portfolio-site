@@ -47,7 +47,8 @@
     &:hover .item-content::after{
         opacity: .5;
     }
-    p {
+    a {
+        text-decoration: none;
         cursor: pointer;
         position: absolute;
         top: 0;
@@ -79,7 +80,7 @@
             width: 100%;
         }
     }
-    &:hover p{
+    &:hover a{
         opacity: 1;
     }
 }

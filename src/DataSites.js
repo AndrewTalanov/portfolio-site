@@ -7,7 +7,9 @@ export const data = [
         id: 0,
         img: image3,
         flag: 'item',
-        title: '1 '
+        title: '1 ',
+        url: 'https://google.com'
+
     },
     {
         id: 1,
