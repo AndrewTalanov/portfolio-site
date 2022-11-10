@@ -6,6 +6,7 @@ import styles from "./Cursor.module.scss";
 import imgLink from "../../img/3.svg";
 import imgArrowDown from "../../img/arrow-black.svg";
 import imgArrowTop from "../../img/arrow-top.svg";
+import imgTelegram from "../../img/telegram.svg";
 
 const Cursor = () => {
 
@@ -13,6 +14,7 @@ const Cursor = () => {
     const refImg = useRef();
     const refArrowDown = useRef();
     const refArrowTop = useRef();
+    const refTelegram = useRef();
 
     const [ roundPos, setRoundPos ] = useState({ x: 0, y: 0 });
 
@@ -34,6 +36,7 @@ const Cursor = () => {
         refImg.current.style.opacity = interacting === 1 ? 1 : 0;
         refArrowTop.current.style.opacity = interacting === 2 ? 1 : 0;
         refArrowDown.current.style.opacity = interacting === 3 ? 1 : 0;
+        refTelegram.current.style.opacity = interacting === 4 ? 1 : 0;
 
     }
 
@@ -48,6 +51,8 @@ const Cursor = () => {
                 interactable = 2;
             } else if (e.target.closest(".arrow-down")) {
                 interactable = 3
+            } else if (e.target.closest(".btn-modal")) {
+                interactable = 4
             }
 
             const interacting = interactable;
@@ -62,6 +67,7 @@ const Cursor = () => {
             <img ref={refImg} src={imgLink} style={{ opacity: 0 }} alt="icon" />
             <img ref={refArrowDown} src={imgArrowDown} style={{ opacity: 0 }} alt="icon" />
             <img ref={refArrowTop} src={imgArrowTop} style={{ opacity: 0 }} alt="icon" />
+            <img ref={refTelegram} src={imgTelegram} style={{ opacity: 0 }} alt="icon" />
         </div>
     );
 }
