@@ -12,7 +12,9 @@
     overflow: hidden;
     position: relative;
     outline: 3px solid;
-    outline-color: white;
+    outline-offset: -3px;
+    // outline-color: var(--secondColor);
+    outline-color: grey;
     transition: .6s;
     border-radius: 20px;
     @media (max-width: 611px) {

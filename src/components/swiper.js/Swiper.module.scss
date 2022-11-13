@@ -16,6 +16,7 @@
     .arrow {
         width: 100%;
         cursor: pointer;
+        filter: brightness(0);
     }
     .arrow-top {
         transform: rotate(180deg);
@@ -30,12 +31,12 @@
             box-sizing: border-box;
             width: 20px;
             height: 20px;
-            border: 1px solid white;
+            border: 1px solid var(--secondColor);
             border-radius: 50%;
         }
     }
 
     .active {
-        background-color: white;
+        background-color: var(--secondColor);
     }
 }

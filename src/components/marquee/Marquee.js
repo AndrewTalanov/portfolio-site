@@ -2,7 +2,7 @@ import styles from "./Marquee.module.scss";
 
 const Marquee = () => {
     return (
-        <marquee classname={styles.marquee}>
+        <marquee className={styles.marquee}>
             <p>kjnfjksdf</p>
         </marquee>
     )
