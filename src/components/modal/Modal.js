@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import { setStyles } from "../../GlobalFunctions.js";
 
 import styles from "./Modal.module.scss";
@@ -10,10 +12,17 @@ import gitmes from "../../img/gitmes.svg";
 import link from "../../img/link.svg";
 
 const Modal = () => {
+
+    const modalWrapper = useRef();
+
+    const closeModal = () => {
+        modalWrapper.current.style.left = '100vw';
+    }
+
     return (
-        <div className={styles['modal-wrapper']}>
+        <div ref={modalWrapper} className={setStyles(styles['modal-wrapper'], 'modal')}>
             <div className={styles['modal-container']}>
-                <button className={styles['modal-close']}>
+                <button className={setStyles(styles['modal-close'], 'btn-close-modal')} onClick={closeModal}>
                     <img src={close} alt="close modal" />
                 </button>
                 <div className={setStyles(styles['modal-left'], styles['modal-item'])}>

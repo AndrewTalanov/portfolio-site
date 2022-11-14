@@ -7,6 +7,7 @@ import imgLink from "../../img/3.svg";
 import imgArrowDown from "../../img/arrow-black.svg";
 import imgArrowTop from "../../img/arrow-top.svg";
 import imgTelegram from "../../img/telegram.svg";
+import close from "../../img/close-white.svg";
 
 const Cursor = () => {
 
@@ -15,6 +16,7 @@ const Cursor = () => {
     const refArrowDown = useRef();
     const refArrowTop = useRef();
     const refTelegram = useRef();
+    const refClose = useRef();
 
     const [ roundPos, setRoundPos ] = useState({ x: 0, y: 0 });
 
@@ -37,6 +39,7 @@ const Cursor = () => {
         refArrowTop.current.style.opacity = interacting === 2 ? 1 : 0;
         refArrowDown.current.style.opacity = interacting === 3 ? 1 : 0;
         refTelegram.current.style.opacity = interacting === 4 ? 1 : 0;
+        refClose.current.style.opacity = interacting === 5 ? 1 : 0;
 
     }
 
@@ -50,9 +53,11 @@ const Cursor = () => {
             } else if (e.target.closest(".arrow-top")) {
                 interactable = 2;
             } else if (e.target.closest(".arrow-down")) {
-                interactable = 3
+                interactable = 3;
             } else if (e.target.closest(".btn-modal")) {
-                interactable = 4
+                interactable = 4;
+            } else if (e.target.closest(".btn-close-modal")) {
+                interactable = 5;
             }
 
             const interacting = interactable;
@@ -68,6 +73,7 @@ const Cursor = () => {
             <img ref={refArrowDown} src={imgArrowDown} style={{ opacity: 0 }} alt="icon" />
             <img ref={refArrowTop} src={imgArrowTop} style={{ opacity: 0 }} alt="icon" />
             <img ref={refTelegram} src={imgTelegram} style={{ opacity: 0 }} alt="icon" />
+            <img ref={refClose} src={close} style={{ opacity: 0 }} alt="icon" />
         </div>
     );
 }
