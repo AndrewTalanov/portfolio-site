@@ -1,4 +1,4 @@
-import styles from "./Marquee.module.scss";
+// import styles from "./Marquee.module.scss";
 
 const Marquee = () => {
     return (

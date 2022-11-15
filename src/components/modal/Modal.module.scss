@@ -1,7 +1,7 @@
 .modal-wrapper {
     position: absolute;
     top: 0;
-    left: 100vw;
+    left: 0;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, .5);
@@ -10,8 +10,13 @@
     justify-content: flex-end;
     overflow: hidden;
     transition: .4s;
+    opacity: 0;
+    pointer-events: none;
 
     .modal-container {
+        position: relative;
+        transition: .4s;
+        right: -50vw;
         width: 50vw;
         height: 100vh;
         background-color: #FFFFFF;
@@ -95,7 +100,7 @@
         }
         .modal-left {
             &::before {
-                background: linear-gradient(45deg, #19b2e6, #00bfff, #00cfff, #40cfff, #00bfff, #0099cc);
+                background: linear-gradient(45deg, #00cfff, #19b2e6, #40cfff, #00bfff, #0099cc, #00bfff);
                 background-size: 400%;
             }
             a {
@@ -105,7 +110,7 @@
 
         .modal-right {
             &::before {
-                background: linear-gradient(45deg, #686868, #707070, #787878, #888888, #808080, #909090, #989898);
+                background: linear-gradient(45deg, #787878, #686868, #888888, #808080, #707070, #909090, #989898);
                 background-size: 400%;
             }
             a {

@@ -1,0 +1,13 @@
+.swiper-pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.swiper-pagination-bullet {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: var(--backColor);
+}
