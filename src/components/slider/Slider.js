@@ -1,4 +1,3 @@
-import * as ReactDOMServer from "react-dom/server";
 import { useRef } from 'react';
 
 import { Navigation, Pagination, A11y } from 'swiper';
@@ -24,13 +23,6 @@ const Slider = () => {
     const navigationPrevRef = useRef();
     const navigationNextRef = useRef();
 
-    const pagination = {
-        clickable: true,
-        renderBullet: function (index, className) {
-            return ReactDOMServer.renderToStaticMarkup(<span className={styles.test} tabindex="0" role="button" aria-label="Go to slide 2"></span>);
-        },
-    };
-
     return (
 
         <Swiper
@@ -47,8 +39,12 @@ const Slider = () => {
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                 swiper.params.navigation.nextEl = navigationNextRef.current;
             }}
-            pagination={{ clickable: true }}
-            // pagination={pagination}
+            pagination={{ 
+                clickable: true,
+                el: '.swiper-pagination-test',
+                type : 'custom',
+                bulletClass:'swiper_pagination_item-test'
+            }}
             direction="vertical"
             onSlideNextTransitionStart={function () {
                 anime({
@@ -96,11 +92,19 @@ const Slider = () => {
                 <div className={styles['slider-btn-prev']} ref={navigationPrevRef}>
                     <img className={setStyles(styles.arrow, styles['arrow-top'], 'arrow-top')} src={arrow} alt="arrow top" />
                 </div>
-                
+                <div className="swiper-pagination-test">
+                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span>
+                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 2" aria-current="true"></span>
+                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span>
+                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span>
+                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 5" aria-current="true"></span>
+                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 6" aria-current="true"></span>
+                </div>
                 <div className={styles['slider-btn-next']} ref={navigationNextRef}>
                     <img className={setStyles(styles.arrow, styles['arrow-down'], 'arrow-down')} src={arrow} alt="arrow down" />
                 </div>
             </div>
+            {/* <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-vertical" style={{backgroundColor: 'white'}}><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span></div> */}
         </Swiper>
     );
 }

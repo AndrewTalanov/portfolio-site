@@ -1,9 +1,12 @@
-.swiper-pagination {
+.swiper-pagination-test {
+    width: 100%;
+    min-height: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    align-items: center;
+    gap: 5px;
 }
-.swiper-pagination-bullet {
+.swiper_pagination_item-test {
     box-sizing: border-box;
     width: 20px;
     height: 20px;
