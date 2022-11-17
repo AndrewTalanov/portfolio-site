@@ -1,0 +1,5 @@
+.pagination-active {
+    width: 25px !important;
+    height: 25px !important;
+    background-color: var(--secondColor) !important;
+}

@@ -16,7 +16,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import styles from './Slider.module.scss';
-import './Pagination.css';
+import './PaginationActive.css';
 
 const Slider = () => {
 
@@ -41,9 +41,23 @@ const Slider = () => {
             }}
             pagination={{ 
                 clickable: true,
-                el: '.swiper-pagination-test',
+                el: '.pagination',
                 type : 'custom',
-                bulletClass:'swiper_pagination_item-test'
+                bulletClass:'pagination-item'
+            }}
+            onSlideChange={function (swiper) {
+                let index = swiper.realIndex;
+
+                const dots = document.querySelectorAll('.pagination-item');
+
+                dots.forEach(dot => {
+                    dot.classList.remove('pagination-active');
+                });
+
+                dots[index].classList.add('pagination-active');
+                
+
+                console.log(index, index - 1)
             }}
             direction="vertical"
             onSlideNextTransitionStart={function () {
@@ -92,19 +106,18 @@ const Slider = () => {
                 <div className={styles['slider-btn-prev']} ref={navigationPrevRef}>
                     <img className={setStyles(styles.arrow, styles['arrow-top'], 'arrow-top')} src={arrow} alt="arrow top" />
                 </div>
-                <div className="swiper-pagination-test">
-                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span>
-                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 2" aria-current="true"></span>
-                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span>
-                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span>
-                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 5" aria-current="true"></span>
-                    <span className="swiper_pagination_item-test" tabIndex="0" role="button" aria-label="Go to slide 6" aria-current="true"></span>
+                <div className={ setStyles(styles["slider-pagination"], 'pagination')}>
+                    <span className={ setStyles(styles["slider-pagination-item"], 'pagination-item')} tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span>
+                    <span className={ setStyles(styles["slider-pagination-item"], 'pagination-item')} tabIndex="0" role="button" aria-label="Go to slide 2" aria-current="true"></span>
+                    <span className={ setStyles(styles["slider-pagination-item"], 'pagination-item')} tabIndex="0" role="button" aria-label="Go to slide 3" aria-current="true"></span>
+                    <span className={ setStyles(styles["slider-pagination-item"], 'pagination-item')} tabIndex="0" role="button" aria-label="Go to slide 4" aria-current="true"></span>
+                    <span className={ setStyles(styles["slider-pagination-item"], 'pagination-item')} tabIndex="0" role="button" aria-label="Go to slide 5" aria-current="true"></span>
+                    <span className={ setStyles(styles["slider-pagination-item"], 'pagination-item')} tabIndex="0" role="button" aria-label="Go to slide 6" aria-current="true"></span>
                 </div>
                 <div className={styles['slider-btn-next']} ref={navigationNextRef}>
                     <img className={setStyles(styles.arrow, styles['arrow-down'], 'arrow-down')} src={arrow} alt="arrow down" />
                 </div>
             </div>
-            {/* <div className="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-vertical" style={{backgroundColor: 'white'}}><span className="swiper-pagination-bullet" tabIndex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span></div> */}
         </Swiper>
     );
 }
