@@ -55,9 +55,6 @@ const Slider = () => {
                 });
 
                 dots[index].classList.add('pagination-active');
-                
-
-                console.log(index, index - 1)
             }}
             direction="vertical"
             onSlideNextTransitionStart={function () {

@@ -3,3 +3,8 @@
     height: 25px !important;
     background-color: var(--secondColor) !important;
 }
+@media (max-width: 612px) {
+    .pagination-active {
+        background-color: var(--backColor) !important;
+    }
+}
