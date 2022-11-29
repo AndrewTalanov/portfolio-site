@@ -11,7 +11,9 @@ const Contacts = () => {
     }
 
     return (
-        <div className={setStyles(styles['btn-contacts'], 'btn-modal')} onClick={openModal}>Связаться</div>
+        <div className={styles['btn-wrapper']}>
+            <div className={setStyles(styles['btn-contacts'], 'btn-modal')} onClick={openModal}>Связаться</div>
+        </div>
     )
 }
 

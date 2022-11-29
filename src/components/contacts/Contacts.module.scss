@@ -1,3 +1,7 @@
+.btn-wrapper {
+    position: relative;
+    z-index: 1;
+}
 .btn-contacts {
     cursor: pointer;
     position: absolute;
@@ -8,9 +12,6 @@
     transition: .4s;
     padding: 20px;
     color: var(--secondColor);
-    @media (max-width: 1730px) {
-        padding: 10px 15px;
-    }
     &::before {
         content: "";
         position: absolute;
